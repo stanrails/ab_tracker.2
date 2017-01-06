@@ -57,4 +57,5 @@ gem 'validates_formatting_of'
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'rb-readline'
 end

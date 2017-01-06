@@ -1,4 +1,4 @@
-<%= form_for @student, :html => { :class => 'form-horizontal form-model' } do |f| %>
+<%= simple_form_for @student, :html => { :class => 'form-horizontal form-model' } do |f| %>
   <div class="form-group">
     <%= f.label :first_name, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
@@ -27,6 +27,18 @@
     <%= f.label :last_four, :class => 'control-label col-md-2' %>
     <div class="col-md-10">
       <%= f.text_field :last_four, :class => 'text-field form-control' %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Courses", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.association :courses, label:false %>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label "Programs", :class => 'control-label col-md-2' %>
+    <div class="col-md-10">
+      <%= f.association :programs, label:false %>
     </div>
   </div>
 
