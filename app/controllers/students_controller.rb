@@ -9,6 +9,8 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+    @programs=Program.all
+    @courses=Course.all.ids
   end
 
   # GET /students/1

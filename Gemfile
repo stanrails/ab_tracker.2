@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.4'
 # Use postgresql as the database for Active Record
@@ -42,6 +40,9 @@ gem 'bundler'
 
 group :development do
   gem 'better_errors'
+  gem 'guard'
+  gem 'guard-livereload', '~> 2.5', require: false
+  gem 'rb-readline'
 end
 
 gem 'binding_of_caller'
@@ -54,8 +55,8 @@ gem 'simple_form'
 gem 'activeadmin', github: 'gregbell/active_admin'
 gem 'tzinfo-data'
 gem 'validates_formatting_of'
+gem "font-awesome-rails"
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'rb-readline'
 end

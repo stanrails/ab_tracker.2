@@ -10,6 +10,8 @@ class ProgramsController < ApplicationController
   # GET /programs/1
   # GET /programs/1.json
   def show
+    @courses=Course.all
+    @programs = Program.all
   end
 
   # GET /programs/new
@@ -69,6 +71,6 @@ class ProgramsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def program_params
-      params.require(:program).permit(:title, :url, :description)
+      params.require(:program).permit(:title, :url, :description, {:course_ids=>[]})
     end
 end

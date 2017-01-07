@@ -1,7 +1,7 @@
 <div class="container">
   <%- model_class = Student -%>
   <div class="page-header">
-    <h1><%=t '.title', :default => Student %></h1>
+    <h1>Students</h1>
   </div>
   <table class="table table-striped">
     <thead>
@@ -10,10 +10,8 @@
         <th><%= model_class.human_attribute_name(:first_name) %></th>
         <th><%= model_class.human_attribute_name(:last_name) %></th>
         <th><%= model_class.human_attribute_name(:email) %></th>
-        <th><%= model_class.human_attribute_name(:payment_type) %></th>
-        <th><%= model_class.human_attribute_name(:last_four) %></th>
-        <th><%= model_class.human_attribute_name(:created_at) %></th>
-        <th><%=t '.actions', :default => t("helpers.actions") %></th>
+        <th>Courses</th>
+        <th>Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -23,9 +21,12 @@
           <td><%= student.first_name %></td>
           <td><%= student.last_name %></td>
           <td><%= student.email %></td>
-          <td><%= student.payment_type %></td>
-          <td><%= student.last_four %></td>
-          <td><%=l student.created_at, format: :long %></td>
+          <td>
+            <% student.course_ids.each do |course| %>
+              <%= Program.find(course).title %> | <%= Course.find(course).title %><br>
+            <% end %>
+          </td>
+
           <td>
             <%= link_to student_path(student), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
             Show

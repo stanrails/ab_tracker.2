@@ -7,7 +7,7 @@
       <%= @student.email %><br>
       Courses:
         <% @student.course_ids.each do |student| %>
-        <%= Course.find(student).title %>
+        <%= link_to Course.find(student).title, course_path(student) %>
         <% end %>
 <hr>
   <div class="form-group">
