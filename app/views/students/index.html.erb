@@ -23,19 +23,19 @@
           <td><%= student.email %></td>
           <td>
             <% student.course_ids.each do |course| %>
-              <strong><%= Program.find(course).title %></strong> | <%= Course.find(course).title %><br>
+              <strong><%= Program.find(course).title %></strong> | <%= link_to Course.find(course).title, course_path(course) %><br>
             <% end %>
           </td>
 
           <td>
             <%= link_to student_path(student), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            Show
+            <i class="fa fa-eye"></i>
             <%- end -%>
             <%= link_to edit_student_path(student), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            Edit
+            <i class="fa fa-pencil"></i>
             <%- end -%>
             <%= link_to student_path(student), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-              Remove
+              <i class="fa fa-trash"></i>
             <%- end -%>
           </td>
         </tr>
