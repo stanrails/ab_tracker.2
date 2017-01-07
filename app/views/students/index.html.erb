@@ -23,7 +23,7 @@
           <td><%= student.email %></td>
           <td>
             <% student.course_ids.each do |course| %>
-              <%= Program.find(course).title %> | <%= Course.find(course).title %><br>
+              <strong><%= Program.find(course).title %></strong> | <%= Course.find(course).title %><br>
             <% end %>
           </td>
 
