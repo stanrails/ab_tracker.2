@@ -1,7 +1,9 @@
-<div class="container">
+<div class="col-md-9 layout-main">
+  <div class="container">
     <%- model_class = Student -%>
   <div class="page-header">
-    <h1><%=t '.title', :default => [:'helpers.titles.new', 'New %{model}'], :model => Student %></h1>
+    <h1> Add A Students</h1>
   </div>
-  <%= render :partial => 'form' %>
+    <%= render :partial => 'form' %>
+  </div>
 </div>

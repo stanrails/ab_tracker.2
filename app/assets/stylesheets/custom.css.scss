@@ -9,6 +9,12 @@
   padding-top:0 !important;
 }
 
+select[multiple], select[size] {
+  height: auto;
+  width: 96%;
+  margin-left: 13px;
+}
+
 /* Single Page Customizations */
 .page-header h1 {
   border-bottom: 1px solid #27476E;

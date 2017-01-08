@@ -2,7 +2,6 @@ class StudentsController < ApplicationController
 
   #->Prelang (scaffolding:rails/scope_to_user)
   before_filter :require_user_signed_in, only: [:new, :edit, :create, :update, :destroy]
-
   before_action :set_student, only: [:show, :edit, :update, :destroy]
 
   # GET /students
@@ -77,6 +76,6 @@ class StudentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def student_params
-      params.require(:student).permit(:first_name, :last_name, :email, :payment_type, :last_four, :user_id, {:course_ids=>[], :program_ids=>[]})
+      params.require(:student).permit(:student_id, :first_name, :last_name, :email, :payment_type, :last_four, :user_id, {:course_ids=>[], :program_ids=>[]})
     end
 end
