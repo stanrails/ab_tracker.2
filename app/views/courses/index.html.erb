@@ -16,6 +16,7 @@
   </thead>
   <tbody>
     <% @courses.each do |course| %>
+      <%  if Program.find_by_id course.program_id %>
       <tr>
         <td><%= course.id %></td>
         <td><%= link_to course.title, course_path(course) %></td>
@@ -34,6 +35,7 @@
           <%- end -%>
         </td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
