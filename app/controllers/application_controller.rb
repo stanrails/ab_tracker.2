@@ -4,7 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-  
+  def after_sign_in_path_for(resource)
+  students_path
+  end
+  def after_sign_out_path_for(resource)
+  user_session_path
+  end
+
   #-> Prelang (user_login:devise)
   def require_user_signed_in
     unless user_signed_in?

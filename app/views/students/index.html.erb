@@ -1,49 +1,53 @@
-<div class="container">
-  <%- model_class = Student -%>
-  <div class="page-header">
-    <h1>Students</h1>
-  </div>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th><%= model_class.human_attribute_name(:first_name) %></th>
-        <th><%= model_class.human_attribute_name(:last_name) %></th>
-        <th><%= model_class.human_attribute_name(:email) %></th>
-        <th>Courses</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @students.each do |student| %>
-        <tr>
-          <td><%= student.id %></td>
-          <td><%= student.first_name %></td>
-          <td><%= student.last_name %></td>
-          <td><%= student.email %></td>
-          <td>
-            <% student.course_ids.each do |course| %>
-              <strong><%= Program.find(course).title %></strong> | <%= link_to Course.find(course).title, course_path(course) %><br>
-            <% end %>
-          </td>
+<div class="col-md-9 layout-main">
+      <%- model_class = Student -%>
+      <div class="page-header">
+        <h1>Students</h1>
+      </div>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th><%= model_class.human_attribute_name(:first_name) %></th>
+            <th><%= model_class.human_attribute_name(:last_name) %></th>
+            <th><%= model_class.human_attribute_name(:email) %></th>
+            <th><span class="col-xs-6" style="margin-left:-15px;">Program</span><span class="col-xs-5" style="margin-left:9px;">Course</span></th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @students.each do |student| %>
+            <tr>
+              <td><%= student.id %></td>
+              <td><%= student.first_name %></td>
+              <td><%= student.last_name %></td>
+              <td><%= student.email %></td>
+                <td>
+                <table class="table">
+                <% student.course_ids.each do |course| %>
+                <tr>
+                  <td><%= Program.find(course).title %></td>
+                  <td><%= link_to Course.find(course).title, course_path(course) %></td>
+                </tr>
+                <% end %>
+              </table>
+                </td>
+              <td>
+                <%= link_to student_path(student), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
+                <i class="fa fa-eye"></i>
+                <%- end -%>
+                <%= link_to edit_student_path(student), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
+                <i class="fa fa-pencil"></i>
+                <%- end -%>
+                <%= link_to student_path(student), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
+                  <i class="fa fa-trash"></i>
+                <%- end -%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
 
-          <td>
-            <%= link_to student_path(student), :class => 'btn btn-xs', :title => "#{ t('.show', :default => t('helpers.links.show')) }" do %>
-            <i class="fa fa-eye"></i>
-            <%- end -%>
-            <%= link_to edit_student_path(student), :class => 'btn btn-xs', :title => "#{ t('.edit', :default => t('helpers.links.edit')) }" do %>
-            <i class="fa fa-pencil"></i>
-            <%- end -%>
-            <%= link_to student_path(student), :method => :delete, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }, :class => 'btn btn-xs', :title => "#{ t('.destroy', :default => t('helpers.links.destroy')) }" do %>
-              <i class="fa fa-trash"></i>
-            <%- end -%>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-
-  <%= link_to t('.new', :default => t("helpers.links.new")),
-              new_student_path,
-              :class => 'btn btn-primary' %>
+      <%= link_to t('.new', :default => t("helpers.links.new")),
+                  new_student_path,
+                  :class => 'btn btn-primary' %>
 </div>

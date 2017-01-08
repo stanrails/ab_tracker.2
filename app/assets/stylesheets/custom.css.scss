@@ -1,3 +1,20 @@
+.navbar {
+    padding-right: 3rem;
+}
+
+.navbar .navbar-brand {
+  padding-top:1.6rem !important;
+}
+.form-horizontal .checkbox-inline {
+  padding-top:0 !important;
+}
+
+/* Single Page Customizations */
+.page-header h1 {
+  border-bottom: 1px solid #27476E;
+  padding-bottom:1rem;
+}
+
 /*flash*/
 .alert-error {
     background-color: #f2dede;
